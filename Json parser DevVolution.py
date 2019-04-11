@@ -2,8 +2,7 @@ import urllib.request
 import json
 import urllib.parse
 from http import HTTPStatus
-import itertools
-import base64
+import sqlite3
 
 
 # def eventInfo(source)
@@ -111,27 +110,53 @@ class Event:
 
 class Participant:
 
-    def __init__(self, event, info):
+    def __init__(self, event, fn, ln, major, minor, email, yr, dob, gen):
         self.__event = event
-        self.__info = info
+        self.__fn = fn
+        self.__ln = ln
+        self.__major = major
+        self.__minor = minor
+        self.__email = email.split("@")[0]
+        self.__yr = yr
+        self.__dob = dob
+        self.__gen = gen
 
+    def getEvent(self):
+        print(self.__event)
+        return self.__event
 
+    def getFirstName(self):
+        print(self.__fn)
+        return self.__fn
 
-    def viewEvent(self):
-        print(self.e.getId())
-        print(self.e.getTitle())
-        print(self.e.getDescription())
-        print(self.e.getStartTime())
-        print(self.e.getEndTime())
-        print(self.e.getLocation())
-        print(self.e.getRoomNumber())
-        print(self.e.getPrivate())
-        print(self.e.getTypes())
-        print(self.e.getTopics())
-        print()
-        return self.e.getId(), self.e.getTitle(), self.e.getDescription(), self.e.getStartTime(), self.e.getEndTime(), \
-               self.e.getLocation(), self.e.getRoomNumber(), self.e.getPrivate(), self.e.getTypes(), self.e.getTopics(), \
-               self.e.getTargets()
+    def getLastName(self):
+        print(self.__ln)
+        return self.__ln
+
+    def getMajor(self):
+        print(self.__major)
+        return self.__major
+
+    def getEmail(self):
+        print(self.__email)
+        return self.__email
+
+    def getYear(self):
+        print(self.__yr)
+        return self.__yr
+
+    def getDoB(self):
+        print(self.__dob)
+        return self.__dob
+
+    def getGender(self):
+        print(self.__gen)
+        return self.__gen
+
+class Organizer:
+    def __init__(self):
+        self
+
 
 
 def main():
@@ -151,16 +176,6 @@ def main():
         # print (ghj['events'][0]['event']['title'])
         # print (ghj['events'][1]['event']['title'])
         print("size:\t{}\n".format(atributes['page']['size']))
-
-        # def xor_crypt_string(data, key='awesomepassword', encode=False, decode=False):
-        #   from itertools import izip, cycle
-        #  import base64
-        #   if decode:
-        #      data = base64.decodestring(data)
-        #  xored = eventList.getId().join(chr(ord(x) ^ ord(y)) for (x, y) in izip(data, cycle(key)))
-        #  if encode:
-        #      return base64.encodestring(xored).strip()
-        # return xored
 
         eventList = []
         for i in atributes['events']:
@@ -192,18 +207,17 @@ def main():
         # listTester = i
         for i in range(0, s):
             print("----------------------------------------------------------------------------")
-            eventList[i].viewEvent()
-			# eventList[i].getId()
-			# eventList[i].getTitle()
-			# eventList[i].getDescription()
-			# eventList[i].getStartTime()
-			# eventList[i].getEndTime()
-			# eventList[i].getLocation()
-			# eventList[i].getRoomNumber()
-			# eventList[i].getPrivate()
-			# eventList[i].getTypes()
-			# eventList[i].getTopics()
-			# eventList[i].getTargets()
+            eventList[i].getId()
+            eventList[i].getTitle()
+            eventList[i].getDescription()
+            eventList[i].getStartTime()
+            eventList[i].getEndTime()
+            eventList[i].getLocation()
+            eventList[i].getRoomNumber()
+            eventList[i].getPrivate()
+            eventList[i].getTypes()
+            eventList[i].getTopics()
+            eventList[i].getTargets()
 
             print("----------------------------------------------------------------------------\n")
     except IndexError as error:
@@ -220,56 +234,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-# def main():
-# define a variable to hold the source URL
-#	urlData = "https://calendar.oswego.edu/api/2/events?pp=100"
-
-# Open the URL and read the data
-#	webUrl = urllib.request.urlopen(urlData)
-#	print ("result code: " + str(webUrl.getcode()))
-# checks the connection to web
-#	if (webUrl.getcode() == HTTPStatus.OK):
-# data is the object holding the read json file
-#		data = webUrl.read()
-# print out our customized results
-# jsonstr fixes discrepancies in the json string
-#		jsonstr = str(data).replace("\\\\","\\")
-# size = jsonstr.rfind("\"size\"")
-#		encoding = webUrl.info().get_content_charset('utf-8')
-# atributes is the obj that holds the json file which was read
-#		atributes = json.loads(data.decode(encoding))
-# this loop pulls out the needed attributes
-#		k=0
-#		for i in atributes['events']:
-#			print(i['event']['title'])
-#			print(i['event']['last_date'])
-#			print(i['event']['first_date'])
-#			print(i['event']['room_number'])
-#			print(i['event']['location_name'])
-#			print("privacy status:")
-#			print(i['event']['private'])
-#			print("event description:")
-#			print(i['event']['event_instances'][0]['event_instance']['start'])
-#			print(i['event']['description_text'])
-
-
-# this loop is supposed to get the type of event
-#			try:
-#				for j in atributes['events'][k]['event']['filters']['event_types']:
-#					print(j['name'])
-#			except Exception as e:
-#				print("the error is: "+ str(e))
-#			print("----------\n")
-#			k = k+1
-
-# eventList = jsonstr.split('},{\"event\":')
-# for i in range(len(eventList)):
-# print (eventList[i])
-# print ("\n\n")
-
-#	else:
-#		print("Received an error from server, cannot retrieve results " + str(webUrl.getcode()))
-
-
-# if __name__ == "__main__":
-#	main()
