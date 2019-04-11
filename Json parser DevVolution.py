@@ -2,7 +2,8 @@ import urllib.request
 import json
 import urllib.parse
 from http import HTTPStatus
-import sqlite3
+import mysql.connector
+from mysql.connector import Error
 
 
 # def eventInfo(source)
@@ -157,6 +158,26 @@ class Organizer:
     def __init__(self):
         self
 
+try:
+    connection = mysql.connector.connect(host='pi.cs.oswego.edu',
+                                         database = 'attendance',
+                                         user='nmolina',
+                                         password='csc380')
+    if connection.is_connected():
+        db_Info = connection.get_server_info()
+        print("connected to database",db_Info)
+
+        cursor = connection.cursor()
+        cursor.execute("select database();")
+        record = cursor.fetchone()
+        print("you're connected to -", record)
+except Error as e:
+    print("Error while connecting to MySQL", e)
+finally:
+    if (connection.is_connected()):
+        cursor.close()
+        connection.close()
+        print("database closed")
 
 
 def main():
