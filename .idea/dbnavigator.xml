@@ -28,6 +28,7 @@
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="38be0ce8-be7a-423e-b60d-f2ab87e933c7">
       <console name="Connection" type="STANDARD" schema="" session="Main" />
+      <console name="Connection 1" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -61,7 +62,7 @@
     <connections>
       <connection id="38be0ce8-be7a-423e-b60d-f2ab87e933c7" active="true">
         <database>
-          <name value="Connection" />
+          <name value="attendance" />
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
@@ -72,21 +73,21 @@
           <url-type value="DATABASE" />
           <host value="pi.cs.oswego.edu" />
           <port value="3306" />
-          <database value="mysql" />
+          <database value="attendance" />
           <os-authentication value="false" />
           <empty-authentication value="false" />
-          <user value="" />
-          <deprecated-pwd value="" />
+          <user value="nmolina" />
+          <deprecated-pwd value="Y3NjMzgw" />
         </database>
         <properties>
           <auto-commit value="false" />
         </properties>
         <ssh-settings>
-          <active value="false" />
-          <proxy-host value="" />
+          <active value="true" />
+          <proxy-host value="pi.cs.oswego.edu" />
           <proxy-port value="22" />
-          <proxy-user value="" />
-          <deprecated-proxy-pwd value="" />
+          <proxy-user value="nmolina" />
+          <deprecated-proxy-pwd value="Y3NjMzgw" />
           <auth-type value="PASSWORD" />
           <key-file value="" />
           <key-passphrase value="" />

@@ -56,7 +56,7 @@ class Event:
                 r[t] = chr(r[t] + 22)
 
         v = ''.join(r)
-        print (v)
+        print(v)
         return v
 
     def getId(self):
@@ -105,67 +105,126 @@ class Event:
 
     # Needs to ask for credentials
     def sendPin(self):
-        print (self.__pin)
+        print(self.__pin)
         return self.__pin
 
 
 class Participant:
 
-    def __init__(self, event, fn, ln, major, minor, email, yr, dob, gen):
-        self.__event = event
+    def __init__(self, id, fn, ln, userName, major, minor, email, yr, dob, gen):
+        self.__id = id
         self.__fn = fn
         self.__ln = ln
+        self.__userName = userName
         self.__major = major
         self.__minor = minor
-        self.__email = email.split("@")[0]
+        self.__email = email
         self.__yr = yr
         self.__dob = dob
         self.__gen = gen
 
-    def getEvent(self):
-        print(self.__event)
-        return self.__event
+    #def getEvent(self):
+     #   print(event)
+      #  return event
+
+    def getID(self):
+        print(self.__id)
+
+    def setID(self, iden):
+        self.__id = iden
 
     def getFirstName(self):
         print(self.__fn)
         return self.__fn
 
+    def setFirstName(self, firstN):
+        self.__fn = firstN
+
     def getLastName(self):
         print(self.__ln)
         return self.__ln
+
+    def setLastName(self, lastN):
+        self.__ln = lastN
+
 
     def getMajor(self):
         print(self.__major)
         return self.__major
 
+    def setMajor(self, maj):
+        self.__major = maj
+
+
     def getEmail(self):
         print(self.__email)
         return self.__email
+
+    def setEmail(self, mail):
+        self.__email = mail
 
     def getYear(self):
         print(self.__yr)
         return self.__yr
 
+    def setYear(self, year):
+        self.__yr = year
+
     def getDoB(self):
         print(self.__dob)
         return self.__dob
+
+    def setDoB(self, birth):
+        self.__dob = birth
 
     def getGender(self):
         print(self.__gen)
         return self.__gen
 
+    def setGender(self, onlyTwo):
+        self.__gen = onlyTwo
+
 class Organizer:
     def __init__(self):
         self
 
+
 try:
     connection = mysql.connector.connect(host='pi.cs.oswego.edu',
-                                         database = 'attendance',
+                                         database='attendance',
                                          user='nmolina',
                                          password='csc380')
+    sql_select_Query = "select * from Account"
+    cursor = connection.cursor()
+    cursor.execute(sql_select_Query)
+    records = cursor.fetchall()
+
+    print("things in the DB- ", cursor.rowcount)
+    i = list
+    for row in records:
+        print(row[0],)
+
+        iden = row[0]
+        print(row[1],)
+        firstName = row[1]
+        print(row[2],)
+        lastName = row[2]
+        print(row[3],)
+        userName = row[3]
+        print(row[4],)
+        email = row[4]
+        print(row[5],)
+        year = row[5]
+        print(row[6],)
+        dob = row[6]
+        print(row[7],)
+        gender = row[7]
+        print(row[8])
+        thing = row[8]
+
     if connection.is_connected():
         db_Info = connection.get_server_info()
-        print("connected to database",db_Info)
+        print("connected to database", db_Info)
 
         cursor = connection.cursor()
         cursor.execute("select database();")
@@ -174,7 +233,7 @@ try:
 except Error as e:
     print("Error while connecting to MySQL", e)
 finally:
-    if (connection.is_connected()):
+    if(connection.is_connected()):
         cursor.close()
         connection.close()
         print("database closed")
@@ -197,6 +256,11 @@ def main():
         # print (ghj['events'][0]['event']['title'])
         # print (ghj['events'][1]['event']['title'])
         print("size:\t{}\n".format(atributes['page']['size']))
+
+        participantLs = []
+        for i in participantLs:
+            print(thing)
+
 
         eventList = []
         for i in atributes['events']:
@@ -254,4 +318,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

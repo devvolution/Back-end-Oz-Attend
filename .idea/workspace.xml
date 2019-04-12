@@ -14,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/PythonPart$Json_parser_DevVolution.coverage" NAME="Json parser DevVolution Coverage Results" MODIFIED="1554954822918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonPart$Json_parser_DevVolution.coverage" NAME="Json parser DevVolution Coverage Results" MODIFIED="1555028785486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonPart$urllibdata_start.coverage" NAME="urllibdata_start Coverage Results" MODIFIED="1554058469301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../../Ex_Files_Python_XML_JSON_Web/Exercise Files/02_urllib" />
     <SUITE FILE_PATH="coverage/PythonPart$Json_part.coverage" NAME="Json part Coverage Results" MODIFIED="1554066452076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonPart$jjreq.coverage" NAME="jjreq Coverage Results" MODIFIED="1554764641707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -26,8 +26,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Json parser DevVolution.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="161" column="63" selection-start-line="161" selection-start-column="63" selection-end-line="161" selection-end-column="63" />
+            <state relative-caret-position="75">
+              <caret line="205" selection-start-line="205" selection-end-line="205" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -38,7 +38,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="db://38be0ce8-be7a-423e-b60d-f2ab87e933c7/consoles/Connection">
           <provider selected="true" editor-type-id="0.CONSOLE">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -85,10 +85,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="width" value="977" />
-    <option name="height" value="1035" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-10" />
+    <option name="width" value="978" />
+    <option name="height" value="1036" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -107,6 +107,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -118,13 +119,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554953973077" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555029896673" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Ex_Files_Learning_Python/Ex_Files_Learning_Python/Exercise Files/Ch5/jsondata_finished.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -265,12 +265,15 @@
       <workItem from="1554846933725" duration="3083000" />
       <workItem from="1554907146948" duration="1450000" />
       <workItem from="1554942969135" duration="1158000" />
-      <workItem from="1554949347104" duration="3950000" />
+      <workItem from="1554949347104" duration="4312000" />
+      <workItem from="1555010247179" duration="2076000" />
+      <workItem from="1555012628080" duration="8975000" />
+      <workItem from="1555030905337" duration="260000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51838000" />
+    <option name="totallyTimeSpent" value="63511000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -282,14 +285,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1431" height="772" extended-state="6" />
+    <frame x="-7" y="-7" width="1431" height="772" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.021849964" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.14566642" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
-      <window_info id="DB Browser" order="4" weight="0.32993445" />
+      <window_info id="DB Browser" order="4" visible="true" weight="0.021849964" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="UI Designer" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
@@ -332,13 +335,6 @@
     <entry file="file://$PROJECT_DIR$/../../../../Ex_Files_Learning_Python/Ex_Files_Learning_Python/Exercise Files/Ch5/jsondata_finished.py" />
     <entry file="file://$PROJECT_DIR$/Practice.js" />
     <entry file="file://$PROJECT_DIR$/Json part.py" />
-    <entry file="file://$PROJECT_DIR$/jjreq.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="896">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="db://38be0ce8-be7a-423e-b60d-f2ab87e933c7/session_browsers/Connection Sessions">
       <provider selected="true" editor-type-id="0.SESSION_BROWSER">
         <state>
@@ -352,20 +348,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="db://38be0ce8-be7a-423e-b60d-f2ab87e933c7/consoles/Connection">
+    <entry file="db://38be0ce8-be7a-423e-b60d-f2ab87e933c7/consoles/Connection 1">
       <provider selected="true" editor-type-id="0.CONSOLE">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Json parser DevVolution.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="161" column="63" selection-start-line="161" selection-start-column="63" selection-end-line="161" selection-end-column="63" />
+        <state relative-caret-position="75">
+          <caret line="205" selection-start-line="205" selection-end-line="205" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="db://38be0ce8-be7a-423e-b60d-f2ab87e933c7/consoles/Connection">
+      <provider selected="true" editor-type-id="0.CONSOLE">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jjreq.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="896">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
         </state>
       </provider>
     </entry>
