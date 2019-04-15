@@ -6,6 +6,7 @@ import mysql.connector
 from mysql.connector import Error
 
 
+
 # def eventInfo(source)
 # Event class incomplete
 class Event:
@@ -34,6 +35,7 @@ class Event:
         self.__eTo = eTo
         self.__eTa = eTa
         self.__pin = self.__configurePin(idt)
+        self.__attendance = []
 
     def __configurePin(self, iden):
         alpha = iden ^ 4716857
@@ -108,16 +110,28 @@ class Event:
         print(self.__pin)
         return self.__pin
 
+        #Needs to ask for credentials
+    def sendAttendance(self):
+        #print (self.__attendance)
+        return self.__attendance
 
+        # add location verirification likely via IP
+    def confirmAttendance(self, psuedo, potential):
+        test = self.__pin == psuedo
+        #print(test)
+        if test:
+            self.__attendance.append(potential)
+        return test
+
+# the participant class used to generate participant objects
 class Participant:
 
-    def __init__(self, id, fn, ln, userName, major, minor, email, yr, dob, gen):
+    def __init__(self, id, fn, ln, userName, major, email, yr, dob, gen):
         self.__id = id
         self.__fn = fn
         self.__ln = ln
         self.__userName = userName
         self.__major = major
-        self.__minor = minor
         self.__email = email
         self.__yr = yr
         self.__dob = dob
@@ -128,28 +142,35 @@ class Participant:
       #  return event
 
     def getID(self):
-        print(self.__id)
+        #print(self.__id)
+        return self.__id
 
-    def setID(self, iden):
-        self.__id = iden
+    def setID(self, ident):
+        self.__id = ident
 
     def getFirstName(self):
-        print(self.__fn)
+        #print(self.__fn)
         return self.__fn
 
     def setFirstName(self, firstN):
         self.__fn = firstN
 
     def getLastName(self):
-        print(self.__ln)
+        #print(self.__ln)
         return self.__ln
 
     def setLastName(self, lastN):
         self.__ln = lastN
 
+    def getUserName(self):
+        #print(self.__userName)
+        return self.__userName
+
+    def setUserName(self, use):
+        self.__userName = use
 
     def getMajor(self):
-        print(self.__major)
+        #print(self.__major)
         return self.__major
 
     def setMajor(self, maj):
@@ -157,86 +178,43 @@ class Participant:
 
 
     def getEmail(self):
-        print(self.__email)
+        #print(self.__email)
         return self.__email
 
     def setEmail(self, mail):
         self.__email = mail
 
     def getYear(self):
-        print(self.__yr)
+        #print(self.__yr)
         return self.__yr
 
     def setYear(self, year):
         self.__yr = year
 
     def getDoB(self):
-        print(self.__dob)
+        #print(self.__dob)
         return self.__dob
 
     def setDoB(self, birth):
         self.__dob = birth
 
     def getGender(self):
-        print(self.__gen)
+        #print(self.__gen)
         return self.__gen
 
     def setGender(self, onlyTwo):
         self.__gen = onlyTwo
 
+    def joinEvent(self):
+        if eventList[0].confirmAttendance("I1U9GXB", self):
+            print('You have joined the following event:\n' + eventList[0].getTitle())
+        else:
+            print('You have failed to join event.')
+
+
 class Organizer:
     def __init__(self):
         self
-
-
-try:
-    connection = mysql.connector.connect(host='pi.cs.oswego.edu',
-                                         database='attendance',
-                                         user='nmolina',
-                                         password='csc380')
-    sql_select_Query = "select * from Account"
-    cursor = connection.cursor()
-    cursor.execute(sql_select_Query)
-    records = cursor.fetchall()
-
-    print("things in the DB- ", cursor.rowcount)
-    i = list
-    for row in records:
-        print(row[0],)
-
-        iden = row[0]
-        print(row[1],)
-        firstName = row[1]
-        print(row[2],)
-        lastName = row[2]
-        print(row[3],)
-        userName = row[3]
-        print(row[4],)
-        email = row[4]
-        print(row[5],)
-        year = row[5]
-        print(row[6],)
-        dob = row[6]
-        print(row[7],)
-        gender = row[7]
-        print(row[8])
-        thing = row[8]
-
-    if connection.is_connected():
-        db_Info = connection.get_server_info()
-        print("connected to database", db_Info)
-
-        cursor = connection.cursor()
-        cursor.execute("select database();")
-        record = cursor.fetchone()
-        print("you're connected to -", record)
-except Error as e:
-    print("Error while connecting to MySQL", e)
-finally:
-    if(connection.is_connected()):
-        cursor.close()
-        connection.close()
-        print("database closed")
 
 
 def main():
@@ -257,11 +235,8 @@ def main():
         # print (ghj['events'][1]['event']['title'])
         print("size:\t{}\n".format(atributes['page']['size']))
 
-        participantLs = []
-        for i in participantLs:
-            print(thing)
 
-
+        global eventList
         eventList = []
         for i in atributes['events']:
             typeList = []
@@ -288,6 +263,69 @@ def main():
                                    i['event']['event_instances'][0]['event_instance']['end'], i['event']['room_number'],
                                    i['event']['private'], typeList, topicList, targetList, i['event']['id']))
         s = eventList.__sizeof__()
+    try:
+        connection = mysql.connector.connect(host='pi.cs.oswego.edu',
+                                             database='attendance',
+                                             user='nmolina',
+                                             password='csc380')
+        sql_select_Query = "select * from Account"
+        cursor = connection.cursor()
+        cursor.execute(sql_select_Query)
+        records = cursor.fetchall()
+        participants = []
+        print("things in the DB- ", cursor.rowcount)
+        i = list
+        for row in records:
+            iden = row[0]
+
+            firstName = row[1]
+
+            lastName = row[2]
+
+            userName = row[3]
+
+            email = row[4]
+
+            year = row[5]
+
+            major = row[6]
+
+            dob = row[7]
+
+            thing = row[8]
+
+
+        participants.append(Participant(iden, firstName, lastName, userName, email, year, major, dob, thing))
+        if connection.is_connected():
+            db_Info = connection.get_server_info()
+            print("connected to database", db_Info)
+
+            cursor = connection.cursor()
+            cursor.execute("select database();")
+            record = cursor.fetchone()
+            print("you're connected to -", record)
+    except Error as e:
+            print("Error while connecting to MySQL", e)
+    finally:
+         if(connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("database closed")
+    try:
+        for i in range(0, s):
+            print("ID: " + str(participants[i].getID()))
+            print("First Name: " + participants[i].getFirstName())
+            print("Last Name: " + participants[i].getLastName())
+            print("User Name: " + participants[i].getUserName())
+            print("Email: " + participants[i].getEmail())
+            print("Year: " + participants[i].getYear())
+            print("Major: " + participants[i].getMajor())
+            print("Date of Birth:" + participants[i].getDoB())
+            print("Sex: " + participants[i].getGender())
+            participants[0].joinEvent()
+    except IndexError as e:
+        print("end of participant list")
+
     try:
         # listTester = i
         for i in range(0, s):
