@@ -126,7 +126,8 @@ class Event:
 # the participant class used to generate participant objects
 class Participant:
 
-    def __init__(self, id, fn, ln, userName, major, email, yr, dob, gen):
+    def __init__(self, userId, id, fn, ln, userName, major, email, yr, dob, gen):
+        self.__userId = userId
         self.__id = id
         self.__fn = fn
         self.__ln = ln
@@ -140,6 +141,9 @@ class Participant:
     #def getEvent(self):
      #   print(event)
       #  return event
+
+    def getUserId(self):
+        return (self.__userId)
 
     def getID(self):
         #print(self.__id)
@@ -270,32 +274,35 @@ def main():
                                              password='csc380')
         sql_select_Query = "select * from Account"
         cursor = connection.cursor()
+
         cursor.execute(sql_select_Query)
         records = cursor.fetchall()
         participants = []
-        print("things in the DB- ", cursor.rowcount)
+        print("things in the DB - ", cursor.rowcount)
         i = list
         for row in records:
-            iden = row[0]
+            userId = row[0]
 
-            firstName = row[1]
+            iden = row[1]
 
-            lastName = row[2]
+            firstName = row[2]
 
-            userName = row[3]
+            lastName = row[3]
 
-            email = row[4]
+            userName = row[4]
 
             year = row[5]
 
             major = row[6]
 
-            dob = row[7]
+            email = row[7]
 
-            thing = row[8]
+            dob = row[8]
+
+            thing = row[9]
 
 
-        participants.append(Participant(iden, firstName, lastName, userName, email, year, major, dob, thing))
+            participants.append(Participant(userId, iden, firstName, lastName, userName, email, year, major, dob, thing))
         if connection.is_connected():
             db_Info = connection.get_server_info()
             print("connected to database", db_Info)
@@ -313,19 +320,21 @@ def main():
                 print("database closed")
     try:
         for i in range(0, s):
+            print("-------------------------------------")
+            print("user ID: " + str(participants[i].getUserId()))
             print("ID: " + str(participants[i].getID()))
             print("First Name: " + participants[i].getFirstName())
             print("Last Name: " + participants[i].getLastName())
             print("User Name: " + participants[i].getUserName())
-            print("Email: " + participants[i].getEmail())
             print("Year: " + participants[i].getYear())
             print("Major: " + participants[i].getMajor())
+            print("Email: " + participants[i].getEmail())
             print("Date of Birth:" + participants[i].getDoB())
             print("Sex: " + participants[i].getGender())
             participants[0].joinEvent()
     except IndexError as e:
         print("end of participant list")
-
+        print("---------------------------------------\n")
     try:
         # listTester = i
         for i in range(0, s):
